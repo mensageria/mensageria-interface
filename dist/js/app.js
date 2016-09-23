@@ -760,4 +760,22 @@ function _init() {
       }
     });
   };
+
 }(jQuery));
+
+$("#enviarMensagem").click(function () {
+  var destinatarios = [];
+  console.log('oloucuo');
+    var titulo = $("#titulo").val();
+    var conteudo = $("#conteudo").val();
+    // alert(user);
+    var data = JSON.stringify({
+        titulo: titulo,
+        conteudo: conteudo
+    });
+    console.log(data);
+});
+
+
+
+
