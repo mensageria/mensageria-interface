@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Criar nova conversa
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancelar</span>
+        <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="cadastrarConversa()" id="ngForm" #form="ngForm">
+    <ion-item>
+      <ion-label>Nome</ion-label>
+      <ion-input name="nome" type="text" required [(ngModel)]="conversa.nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label> Mensagem interativa?</ion-label>
+      <ion-toggle name="interativa" [(ngModel)]="conversa.interativa" checked="false"></ion-toggle>
+    </ion-item>
+
+    <ion-list>
+      <ion-list-header text-center>
+        Selecione os integrantes
+      </ion-list-header>
+
+      <ion-item *ngFor="let usuario of usuarios">
+        <ion-label>{{usuario.nome}}</ion-label>
+        <ion-checkbox [(ngModel)]="usuario.selecionado" name="nomeUsuario"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+
+  </form>
+  <ion-fab bottom right>
+    <button ion-fab form="ngForm" [disabled]="!form.form.valid">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

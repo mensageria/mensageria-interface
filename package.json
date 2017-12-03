@@ -1,25 +1,40 @@
 {
-  "name": "admin-lte",
-  "version": "2.3.6",
-  "main": "dist/js/app.min.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/almasaeed2010/AdminLTE.git"
+  "name": "mensageriaInterface",
+  "version": "0.0.1",
+  "author": "Ionic Framework",
+  "homepage": "http://ionicframework.com/",
+  "private": true,
+  "scripts": {
+    "clean": "ionic-app-scripts clean",
+    "build": "ionic-app-scripts build",
+    "lint": "ionic-app-scripts lint",
+    "ionic:build": "ionic-app-scripts build",
+    "ionic:serve": "ionic-app-scripts serve"
   },
-  "license": "MIT",
+  "dependencies": {
+    "@angular/common": "5.0.3",
+    "@angular/compiler": "5.0.3",
+    "@angular/compiler-cli": "5.0.3",
+    "@angular/core": "5.0.3",
+    "@angular/forms": "5.0.3",
+    "@angular/http": "5.0.3",
+    "@angular/platform-browser": "5.0.3",
+    "@angular/platform-browser-dynamic": "5.0.3",
+    "@ionic-native/core": "4.4.0",
+    "@ionic-native/splash-screen": "4.4.0",
+    "@ionic-native/status-bar": "4.4.0",
+    "@ionic/storage": "^2.1.3",
+    "ionic-angular": "3.9.2",
+    "ionicons": "3.0.0",
+    "rxjs": "5.5.2",
+    "sockjs-client": "^1.1.4",
+    "stompjs": "^2.3.3",
+    "sw-toolbox": "3.6.0",
+    "zone.js": "0.8.18"
+  },
   "devDependencies": {
-    "R2": "^1.4.3",
-    "grunt": "~0.4.5",
-    "grunt-bootlint": "^0.9.1",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-csslint": "^0.5.0",
-    "grunt-contrib-cssmin": "^0.12.2",
-    "grunt-contrib-jshint": "^0.11.2",
-    "grunt-contrib-less": "^0.12.0",
-    "grunt-contrib-uglify": "^0.7.0",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-cssjanus": "^0.2.4",
-    "grunt-image": "^1.0.5",
-    "grunt-includes": "^0.4.5"
-  }
+    "@ionic/app-scripts": "3.1.4",
+    "typescript": "2.4.2"
+  },
+  "description": "An Ionic project"
 }

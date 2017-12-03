@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>lista-conversas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding text-center>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 *ngFor="let conversa of conversas">
+        <ion-card navPush="ChatConversaPage" [navParams]="{conversa: conversa}">
+          <ion-card-header>
+            <b>{{conversa.nome}}</b>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="card-title">
+              <p>{{conversa.qtdMensagens}} Mensagens</p>
+            </div>
+            <div class="card-subtitle">
+              <p>{{conversa.qtdPessoas}} Pessoas</p>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab bottom right>
+    <button ion-fab (click)=criarConversa()>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
