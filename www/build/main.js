@@ -689,7 +689,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ApiProvider = (function () {
     function ApiProvider(http) {
         this.http = http;
-        this.urlBase = 'https://mensageria-interface.herokuapp.com';
+        this.urlBase = 'https://mensageria-ws.herokuapp.com';
         this.url = this.urlBase + '/api';
     }
     ApiProvider.prototype.get = function (endpoint, params, reqOpts) {
