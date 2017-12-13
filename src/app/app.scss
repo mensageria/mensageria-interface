@@ -18,3 +18,7 @@
 .toolbar-title{
     text-align: center;
 }
+
+ion-content{
+    background-color: map-get($colors, secondary) !important;
+}

@@ -1,7 +1,7 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>lista-conversas</ion-title>
+  <ion-navbar color="header">
+    <ion-title>Conversas</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -11,16 +11,18 @@
   <ion-grid>
     <ion-row>
       <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 *ngFor="let conversa of conversas">
-        <ion-card navPush="ChatConversaPage" [navParams]="{conversa: conversa}">
+        <ion-card navPush="ChatConversaPage" [navParams]="{conversa: conversa}" color="secondary">
           <ion-card-header>
             <b>{{conversa.nome}}</b>
           </ion-card-header>
           <ion-card-content>
-            <div class="card-title">
-              <p>{{conversa.qtdMensagens}} Mensagens</p>
-            </div>
-            <div class="card-subtitle">
-              <p>{{conversa.qtdPessoas}} Pessoas</p>
+            <div class="detalhes">
+              <div class="card-title">
+                <p>{{conversa.qtdMensagens}} Mensagens</p>
+              </div>
+              <div class="card-subtitle">
+                <p>{{conversa.qtdPessoas}} Pessoas</p>
+              </div>
             </div>
           </ion-card-content>
         </ion-card>

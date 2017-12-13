@@ -5,7 +5,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -23,7 +22,6 @@ import { ParticipaProvider } from '../providers/participa/participa';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     ListPage,
     ModalCadastrarConversaPage,
   ],
@@ -36,7 +34,6 @@ import { ParticipaProvider } from '../providers/participa/participa';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     ListPage,
     ModalCadastrarConversaPage,
   ],

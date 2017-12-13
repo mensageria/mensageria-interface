@@ -1,6 +1,5 @@
 import { Mensagem } from './../../models/mensagem';
 import { StorageProvider } from './../../providers/storage/storage';
-import { HomePage } from './../home/home';
 import { ConversasProvider } from './../../providers/conversas/conversas';
 import { SocketProvider } from './../../providers/socket/socket';
 import { Component } from '@angular/core';
@@ -38,7 +37,7 @@ export class ChatConversaPage {
     this.conversa = this.navParams.get('conversa');
 
     if (this.conversa == null) {
-      this.navCtrl.setRoot(HomePage)
+      this.navCtrl.setRoot('CadastrarUsuariosPage')
     } else {
       this.topico += this.conversa.id;
       this.inputMsg.conteudo = '';
@@ -49,11 +48,11 @@ export class ChatConversaPage {
     try {
       this.conversa
         ? this.subscribeTopic()
-        : this.navCtrl.setRoot(HomePage)
+        : this.navCtrl.setRoot('CadastrarUsuariosPage')
 
       this.usuario = await this.storage._.get(this.storage.USUARIO)
       if (!this.usuario) {
-        this.navCtrl.setRoot(HomePage)
+        this.navCtrl.setRoot('CadastrarUsuariosPage')
       }
 
       this.inputMsg.autor = this.usuario;
