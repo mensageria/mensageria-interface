@@ -32,8 +32,9 @@ export class ChatConversaPage {
     public navParams: NavParams,
     public socketProvider: SocketProvider,
     public conversasProvider: ConversasProvider,
-    public storage: StorageProvider) {
+    public storage: StorageProvider) { }
 
+  async ionViewDidLoad() {
     this.conversa = this.navParams.get('conversa');
 
     if (this.conversa == null) {
@@ -42,9 +43,7 @@ export class ChatConversaPage {
       this.topico += this.conversa.id;
       this.inputMsg.conteudo = '';
     }
-  }
 
-  async ionViewDidLoad() {
     try {
       this.conversa
         ? this.subscribeTopic()
@@ -65,7 +64,7 @@ export class ChatConversaPage {
   enviarMensagem(conteudo) {
     this.inputMsg.conteudo = conteudo;
     this.inputMsg.dataEnvio = new Date();
-    this.socketProvider.send('/app/enviar/mensagens/conversa/'+this.conversa.id, this.inputMsg);
+    this.socketProvider.send('/app/enviar/mensagens/conversa/' + this.conversa.id, this.inputMsg);
     this.inputMsg.conteudo = '';
   }
 

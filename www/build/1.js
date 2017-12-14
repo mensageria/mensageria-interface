@@ -120,14 +120,6 @@ var ChatConversaPage = (function () {
         this.usuario = new __WEBPACK_IMPORTED_MODULE_7__models_usuario__["a" /* Usuario */]();
         this.conversa = new __WEBPACK_IMPORTED_MODULE_6__models_conversa__["a" /* Conversa */]();
         this.inputMsg = new __WEBPACK_IMPORTED_MODULE_0__models_mensagem__["a" /* Mensagem */]();
-        this.conversa = this.navParams.get('conversa');
-        if (this.conversa == null) {
-            this.navCtrl.setRoot('CadastrarUsuariosPage');
-        }
-        else {
-            this.topico += this.conversa.id;
-            this.inputMsg.conteudo = '';
-        }
     }
     ChatConversaPage.prototype.ionViewDidLoad = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -135,25 +127,35 @@ var ChatConversaPage = (function () {
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        _b.trys.push([0, 2, , 3]);
+                        this.conversa = this.navParams.get('conversa');
+                        if (this.conversa == null) {
+                            this.navCtrl.setRoot('CadastrarUsuariosPage');
+                        }
+                        else {
+                            this.topico += this.conversa.id;
+                            this.inputMsg.conteudo = '';
+                        }
+                        _b.label = 1;
+                    case 1:
+                        _b.trys.push([1, 3, , 4]);
                         this.conversa
                             ? this.subscribeTopic()
                             : this.navCtrl.setRoot('CadastrarUsuariosPage');
                         _a = this;
                         return [4 /*yield*/, this.storage._.get(this.storage.USUARIO)];
-                    case 1:
+                    case 2:
                         _a.usuario = _b.sent();
                         if (!this.usuario) {
                             this.navCtrl.setRoot('CadastrarUsuariosPage');
                         }
                         this.inputMsg.autor = this.usuario;
                         this.inputMsg.chat = this.conversa;
-                        return [3 /*break*/, 3];
-                    case 2:
+                        return [3 /*break*/, 4];
+                    case 3:
                         err_1 = _b.sent();
                         console.log(err_1);
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
@@ -206,13 +208,10 @@ var ChatConversaPage = (function () {
             selector: 'page-chat-conversa',template:/*ion-inline-start:"/home/allison/git/mensageria-interface/src/pages/chat-conversa/chat-conversa.html"*/'<!--\n  Generated template for the ChatConversaPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>chatConversa</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let msg of mensagens">\n      <h1>Usuario: {{msg.autor.nome}}</h1>\n      <p>\n        <b>Mensagem: </b>{{msg.conteudo}}</p>\n    </ion-item>\n  </ion-list>\n\n\n</ion-content>\n<ion-footer>\n  <ion-item>\n    <ion-label color="primary" fixed>Mensagem: </ion-label>\n    <ion-input type="text" placeholder="Digite sua Mensagem" [(ngModel)]="inputMsg.conteudo" (keyup.enter)="enviarMensagem($event.target.value)"></ion-input>\n  </ion-item>\n</ion-footer>'/*ion-inline-end:"/home/allison/git/mensageria-interface/src/pages/chat-conversa/chat-conversa.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_1__providers_storage_storage__["a" /* StorageProvider */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5_ionic_angular__["h" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["i" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_socket_socket__["a" /* SocketProvider */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_conversas_conversas__["a" /* ConversasProvider */],
-            __WEBPACK_IMPORTED_MODULE_1__providers_storage_storage__["a" /* StorageProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_socket_socket__["a" /* SocketProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_socket_socket__["a" /* SocketProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_conversas_conversas__["a" /* ConversasProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_conversas_conversas__["a" /* ConversasProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1__providers_storage_storage__["a" /* StorageProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__providers_storage_storage__["a" /* StorageProvider */]) === "function" && _e || Object])
     ], ChatConversaPage);
     return ChatConversaPage;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=chat-conversa.js.map
