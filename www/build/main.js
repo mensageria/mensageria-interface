@@ -681,7 +681,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ApiProvider = (function () {
     function ApiProvider(http) {
         this.http = http;
-        this.urlBase = 'http://localhost:8080';
+        this.urlBase = 'https://mensageria-interface.herokuapp.com';
         this.url = this.urlBase + '/api';
     }
     ApiProvider.prototype.get = function (endpoint, params, reqOpts) {
@@ -713,9 +713,10 @@ var ApiProvider = (function () {
     };
     ApiProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
     ], ApiProvider);
     return ApiProvider;
+    var _a;
 }());
 
 //# sourceMappingURL=api.js.map
