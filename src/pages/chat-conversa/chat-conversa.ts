@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Conversa } from '../../models/conversa';
 import { Usuario } from '../../models/usuario';
+import { UsuarioProvider } from '../../providers/usuario/usuario';
 
 /**
  * Generated class for the ChatConversaPage page.
@@ -32,33 +33,36 @@ export class ChatConversaPage {
     public navParams: NavParams,
     public socketProvider: SocketProvider,
     public conversasProvider: ConversasProvider,
-    public storage: StorageProvider) { }
+    public storage: StorageProvider,
+    public usuarioProvider: UsuarioProvider) { }
 
   async ionViewDidLoad() {
-    this.conversa = this.navParams.get('conversa');
+    if (this.navParams.get('conversa')) {
+      this.conversa = this.navParams.get('conversa');
 
-    if (this.conversa == null) {
-      this.navCtrl.setRoot('CadastrarUsuariosPage')
-    } else {
       this.topico += this.conversa.id;
       this.inputMsg.conteudo = '';
-    }
 
-    try {
-      this.conversa
-        ? this.subscribeTopic()
-        : this.navCtrl.setRoot('CadastrarUsuariosPage')
+      this.subscribeTopic();
+      try {
+        this.usuario = await this.storage._.get(this.storage.USUARIO)
+        if (!this.usuario) {
+          this.usuarioProvider.getUsuario(4).subscribe((usuario: any) => {
+            this.usuario = usuario;
+            this.storage._.set(this.storage.USUARIO, usuario);
+          }, err => this.navCtrl.setRoot('ListaConversasPage'));
+        }
 
-      this.usuario = await this.storage._.get(this.storage.USUARIO)
-      if (!this.usuario) {
-        this.navCtrl.setRoot('CadastrarUsuariosPage')
+        this.inputMsg.autor = this.usuario;
+        this.inputMsg.chat = this.conversa;
+      } catch (err) {
+        console.log(err)
       }
-
-      this.inputMsg.autor = this.usuario;
-      this.inputMsg.chat = this.conversa;
-    } catch (err) {
-      console.log(err)
+    } else {
+      this.navCtrl.setRoot('ListaConversasPage')
     }
+
+
   }
 
   enviarMensagem(conteudo) {

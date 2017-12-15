@@ -5,6 +5,8 @@ import { Conversa } from '../../models/conversa';
 import { ModalCadastrarConversaPage } from '../modal-cadastrar-conversa/modal-cadastrar-conversa';
 import { Events } from 'ionic-angular/util/events';
 import { Chart } from 'chart.js';
+import { UsuarioProvider } from '../../providers/usuario/usuario';
+import { StorageProvider } from '../../providers/storage/storage';
 
 @IonicPage()
 @Component({
@@ -24,10 +26,16 @@ export class ListaConversasPage {
     public navParams: NavParams,
     public conversasProvider: ConversasProvider,
     public modalCtrl: ModalController,
-    public events: Events) { }
+    public events: Events,
+    public usuarioProvider: UsuarioProvider,
+    public storage: StorageProvider) { }
 
-  ionViewDidLoad() {
+  async ionViewDidLoad() {
     this.events.subscribe('conversa:atualizar', conversa => this.atualizarConversas(conversa));
+    await this.usuarioProvider.getUsuario(4).subscribe(usuario => {
+      this.storage._.set(this.storage.USUARIO, usuario);
+    })
+
     this.getAllConversas();
   }
 
@@ -65,7 +73,7 @@ export class ListaConversasPage {
   }
 
   criarChart() {
-    console.log('teste',document.getElementsByClassName('canvas'))
+    console.log('teste', document.getElementsByClassName('canvas'))
     this.barChart = new Chart(document.getElementsByClassName('canvas'), {
 
       type: 'bar',

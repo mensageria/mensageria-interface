@@ -6,8 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>chatConversa</ion-title>
+  <ion-navbar color="header">
+    <ion-title>{{conversa.nome}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let msg of mensagens">
+    <ion-item *ngFor="let msg of mensagens" color="secondary">
       <h1>Usuario: {{msg.autor.nome}}</h1>
       <p>
         <b>Mensagem: </b>{{msg.conteudo}}</p>
