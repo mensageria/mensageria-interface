@@ -27980,6 +27980,41 @@ ion-content {
   background-color: #398897 !important;
 }
 
+page-chat-conversa ion-item .item-inner {
+  border-bottom: none !important;
+}
+
+page-chat-conversa * {
+  margin: 0px;
+  padding: 0px;
+}
+
+page-chat-conversa .box {
+  width: 300px;
+  margin: 0px auto;
+  background: #00bfb6;
+  padding: 20px;
+  text-align: center;
+  font-weight: 900;
+  color: #fff;
+  font-family: arial;
+  position: relative;
+}
+
+page-chat-conversa .sb2:before {
+  text-align: left;
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid #00bfb6;
+  border-top: 10px solid #00bfb6;
+  border-bottom: 10px solid transparent;
+  left: -19px;
+  top: 6px;
+}
+
 page-lista-conversas .scroll-content {
   background-color: #add0d3;
 }
