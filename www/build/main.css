@@ -27990,11 +27990,11 @@ page-chat-conversa * {
 }
 
 page-chat-conversa .box {
+  text-align: left;
   width: 300px;
   margin: 0px auto;
   background: #00bfb6;
   padding: 20px;
-  text-align: center;
   font-weight: 900;
   color: #fff;
   font-family: arial;
