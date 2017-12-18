@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="header">
     <ion-title>
       Criar nova conversa
     </ion-title>
@@ -14,12 +14,12 @@
 
 <ion-content>
   <form (ngSubmit)="cadastrarConversa()" id="ngForm" #form="ngForm">
-    <ion-item>
-      <ion-label>Nome</ion-label>
+    <ion-item color="secondary">
+      <ion-label style="color: white;">Nome</ion-label>
       <ion-input name="nome" type="text" required [(ngModel)]="conversa.nome"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item color="secondary">
       <ion-label> Mensagem interativa?</ion-label>
       <ion-toggle name="interativa" [(ngModel)]="conversa.interativa" checked="false"></ion-toggle>
     </ion-item>
@@ -29,7 +29,7 @@
         Selecione os integrantes
       </ion-list-header>
 
-      <ion-item *ngFor="let usuario of usuarios">
+      <ion-item *ngFor="let usuario of usuarios" color="secondary">
         <ion-label>{{usuario.nome}}</ion-label>
         <ion-checkbox [(ngModel)]="usuario.selecionado" name="nomeUsuario"></ion-checkbox>
       </ion-item>
