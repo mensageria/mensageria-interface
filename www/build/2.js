@@ -43,7 +43,7 @@ var CadastrarUsuariosPageModule = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CadastrarUsuariosPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_usuario_usuario__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_usuario_usuario__ = __webpack_require__(120);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(41);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -131,10 +131,11 @@ var CadastrarUsuariosPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
             selector: 'page-cadastrar-usuarios',template:/*ion-inline-start:"/home/born/projetos/mensageria-interface/src/pages/cadastrar-usuarios/cadastrar-usuarios.html"*/'<!--\n  Generated template for the CadastrarUsuariosPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="header">\n    <ion-title>Usuarios</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <button ion-button medium color="danger" (click)="createUsuarios()">\n    Cadastrar usuários selecionados\n  </button>\n\n  <ion-item color="secondary" no-lines>\n    <ion-label>Selecionar todos</ion-label>\n    <ion-checkbox [(ngModel)]="selectedAll" (ionChange)="selectAll()"></ion-checkbox>\n  </ion-item>\n  <ion-list no-lines inset>\n    <ion-item *ngFor="let usuario of usuariosNaoCadastrados" color="secondary">\n      <ion-label>{{usuario.nome}}</ion-label>\n      <ion-checkbox [(ngModel)]="usuario.selected" name="nomeUsuario"></ion-checkbox>\n    </ion-item>\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"/home/born/projetos/mensageria-interface/src/pages/cadastrar-usuarios/cadastrar-usuarios.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__providers_usuario_usuario__["a" /* UsuarioProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__providers_usuario_usuario__["a" /* UsuarioProvider */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_0__providers_usuario_usuario__["a" /* UsuarioProvider */]])
     ], CadastrarUsuariosPage);
     return CadastrarUsuariosPage;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=cadastrar-usuarios.js.map
