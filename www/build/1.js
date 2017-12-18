@@ -1,14 +1,14 @@
 webpackJsonp([1],{
 
-/***/ 362:
+/***/ 363:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatConversaPageModule", function() { return ChatConversaPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListaConversasPageModule", function() { return ListaConversasPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chat_conversa__ = __webpack_require__(492);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lista_conversas__ = __webpack_require__(368);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,40 +18,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ChatConversaPageModule = (function () {
-    function ChatConversaPageModule() {
+var ListaConversasPageModule = (function () {
+    function ListaConversasPageModule() {
     }
-    ChatConversaPageModule = __decorate([
+    ListaConversasPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__chat_conversa__["a" /* ChatConversaPage */],
+                __WEBPACK_IMPORTED_MODULE_2__lista_conversas__["a" /* ListaConversasPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__chat_conversa__["a" /* ChatConversaPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__lista_conversas__["a" /* ListaConversasPage */]),
             ],
         })
-    ], ChatConversaPageModule);
-    return ChatConversaPageModule;
+    ], ListaConversasPageModule);
+    return ListaConversasPageModule;
 }());
 
-//# sourceMappingURL=chat-conversa.module.js.map
+//# sourceMappingURL=lista-conversas.module.js.map
 
 /***/ }),
 
-/***/ 492:
+/***/ 368:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatConversaPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_mensagem__ = __webpack_require__(493);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_storage_storage__ = __webpack_require__(238);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_conversas_conversas__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_socket_socket__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic_angular__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_conversa__ = __webpack_require__(241);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_usuario__ = __webpack_require__(494);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_usuario_usuario__ = __webpack_require__(121);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListaConversasPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_conversas_conversas__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modal_cadastrar_conversa_modal_cadastrar_conversa__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular_util_events__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_usuario_usuario__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_storage_storage__ = __webpack_require__(238);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -103,170 +101,78 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-
-
-/**
- * Generated class for the ChatConversaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var ChatConversaPage = (function () {
-    function ChatConversaPage(navCtrl, navParams, socketProvider, conversasProvider, storage, usuarioProvider) {
+var ListaConversasPage = (function () {
+    function ListaConversasPage(navCtrl, navParams, conversasProvider, modalCtrl, events, usuarioProvider, storage) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.socketProvider = socketProvider;
         this.conversasProvider = conversasProvider;
-        this.storage = storage;
+        this.modalCtrl = modalCtrl;
+        this.events = events;
         this.usuarioProvider = usuarioProvider;
-        this.topico = '/topic/mensagens/conversa/';
-        this.usuario = new __WEBPACK_IMPORTED_MODULE_7__models_usuario__["a" /* Usuario */]();
-        this.conversa = new __WEBPACK_IMPORTED_MODULE_6__models_conversa__["a" /* Conversa */]();
-        this.inputMsg = new __WEBPACK_IMPORTED_MODULE_0__models_mensagem__["a" /* Mensagem */]();
+        this.storage = storage;
     }
-    ChatConversaPage.prototype.ionViewDidLoad = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            var _a, err_1;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        if (!this.navParams.get('conversa')) return [3 /*break*/, 5];
-                        this.conversa = this.navParams.get('conversa');
-                        this.topico += this.conversa.id;
-                        this.inputMsg.conteudo = '';
-                        this.subscribeTopic();
-                        _b.label = 1;
-                    case 1:
-                        _b.trys.push([1, 3, , 4]);
-                        _a = this;
-                        return [4 /*yield*/, this.storage._.get(this.storage.USUARIO)];
-                    case 2:
-                        _a.usuario = _b.sent();
-                        if (!this.usuario) {
-                            this.usuarioProvider.getUsuario(4).subscribe(function (usuario) {
-                                _this.usuario = usuario;
-                                _this.storage._.set(_this.storage.USUARIO, usuario);
-                            }, function (err) { return _this.navCtrl.setRoot('ListaConversasPage'); });
-                        }
-                        this.inputMsg.autor = this.usuario;
-                        this.inputMsg.chat = this.conversa;
-                        return [3 /*break*/, 4];
-                    case 3:
-                        err_1 = _b.sent();
-                        console.log(err_1);
-                        return [3 /*break*/, 4];
-                    case 4: return [3 /*break*/, 6];
-                    case 5:
-                        this.navCtrl.setRoot('ListaConversasPage');
-                        _b.label = 6;
-                    case 6: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    ChatConversaPage.prototype.enviarMensagem = function (conteudo) {
-        this.inputMsg.conteudo = conteudo;
-        this.inputMsg.dataEnvio = new Date();
-        this.socketProvider.send('/app/enviar/mensagens/conversa/' + this.conversa.id, this.inputMsg);
-        this.inputMsg.conteudo = '';
-    };
-    ChatConversaPage.prototype.subscribeTopic = function () {
+    ListaConversasPage.prototype.ionViewDidLoad = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.getPreviousMessages()];
+                    case 0:
+                        this.events.subscribe('conversa:atualizar', function (conversa) { return _this.atualizarConversas(conversa); });
+                        return [4 /*yield*/, this.usuarioProvider.getUsuario(4).subscribe(function (usuario) {
+                                _this.storage._.set(_this.storage.USUARIO, usuario);
+                            })];
                     case 1:
                         _a.sent();
-                        this.socketProvider.subscribe(this.topico, function (mensagem) { return _this.mensagemRecebida(mensagem); });
+                        this.getAllConversas();
                         return [2 /*return*/];
                 }
             });
         });
     };
-    ChatConversaPage.prototype.mensagemRecebida = function (data) {
-        var res = JSON.parse(data.body);
-        if (res.conteudo != null) {
-            this.mensagens.push(res);
-        }
-        else if (res.recebido != null) {
-            this.mensagens.forEach(function (mensagem) {
-                if (mensagem.id == res.id) {
-                    mensagem.listaRecebidos.push(res);
-                }
-            });
+    ListaConversasPage.prototype.atualizarConversas = function (conversa) {
+        if (this.conversas.indexOf(conversa) == -1) {
+            this.conversas.push(conversa);
         }
         else {
-            console.log('nao é de tipo nenhum:', res);
+            this.conversas = this.conversas.splice(conversa);
         }
     };
-    ChatConversaPage.prototype.getPreviousMessages = function () {
+    ListaConversasPage.prototype.getAllConversas = function () {
         var _this = this;
-        return this.conversasProvider.getUltimasMensagens(this.conversa.id)
-            .subscribe(function (mensagens) {
-            _this.mensagens = mensagens;
+        this.conversasProvider.getAllConversas()
+            .subscribe(function (conversas) {
+            _this.conversas = conversas;
+            //this.criarChart();
         });
     };
-    ChatConversaPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["m" /* Component */])({
-            selector: 'page-chat-conversa',template:/*ion-inline-start:"/home/allison/git/mensageria-interface/src/pages/chat-conversa/chat-conversa.html"*/'<!--\n  Generated template for the ChatConversaPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="header">\n    <ion-title>{{conversa.nome}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let msg of mensagens" color="secondary" class="mensagem">\n      <ion-row>\n        <ion-col col-4>\n          <h1>{{msg.autor.nome}}: </h1>\n        </ion-col>\n        <ion-col pull-md-1 pull-lg-2>\n          <div class="box sb2">{{msg.conteudo}}</div>\n        </ion-col>\n      </ion-row>\n    </ion-item>\n  </ion-list>\n</ion-content>\n\n<ion-footer>\n  <ion-item>\n    <ion-label color="primary" fixed>Mensagem: </ion-label>\n    <ion-input type="text" placeholder="Digite sua Mensagem" [(ngModel)]="inputMsg.conteudo" (keyup.enter)="enviarMensagem($event.target.value)"></ion-input>\n  </ion-item>\n</ion-footer>'/*ion-inline-end:"/home/allison/git/mensageria-interface/src/pages/chat-conversa/chat-conversa.html"*/,
-            providers: [__WEBPACK_IMPORTED_MODULE_1__providers_storage_storage__["a" /* StorageProvider */]]
+    ListaConversasPage.prototype.openModal = function (characterNum) {
+        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_3__modal_cadastrar_conversa_modal_cadastrar_conversa__["a" /* ModalCadastrarConversaPage */], characterNum);
+        modal.present();
+    };
+    ListaConversasPage.prototype.criarConversa = function () {
+        this.openModal({ charNum: 0 });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_8" /* ViewChild */])('lineCanvas'),
+        __metadata("design:type", Object)
+    ], ListaConversasPage.prototype, "lineCanvas", void 0);
+    ListaConversasPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
+            selector: 'page-lista-conversas',template:/*ion-inline-start:"/home/born/projetos/mensageria-interface/src/pages/lista-conversas/lista-conversas.html"*/'<ion-header>\n\n  <ion-navbar color="header">\n    <ion-title>Conversas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding text-center>\n  <ion-grid>\n    <ion-row>\n      <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 *ngFor="let conversa of conversas">\n        <ion-card navPush="ChatConversaPage" [navParams]="{conversa: conversa}" color="secondary">\n          <ion-card-header>\n            <b>{{conversa.nome}}</b>\n          </ion-card-header>\n          <ion-card-content>\n            <div class="detalhes">\n              <div class="card-title">\n                <p>{{conversa.qtdMensagens}} Mensagens</p>\n              </div>\n              <div class="card-subtitle">\n                <p>{{conversa.qtdPessoas}} Pessoas</p>\n              </div>\n            </div>\n          </ion-card-content>\n        </ion-card>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n  <ion-fab bottom right>\n    <button ion-fab (click)=criarConversa()>\n      <ion-icon name="add"></ion-icon>\n    </button>\n  </ion-fab>\n</ion-content>'/*ion-inline-end:"/home/born/projetos/mensageria-interface/src/pages/lista-conversas/lista-conversas.html"*/,
+            providers: [__WEBPACK_IMPORTED_MODULE_0__providers_conversas_conversas__["a" /* ConversasProvider */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5_ionic_angular__["h" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["i" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_socket_socket__["a" /* SocketProvider */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_conversas_conversas__["a" /* ConversasProvider */],
-            __WEBPACK_IMPORTED_MODULE_1__providers_storage_storage__["a" /* StorageProvider */],
-            __WEBPACK_IMPORTED_MODULE_8__providers_usuario_usuario__["a" /* UsuarioProvider */]])
-    ], ChatConversaPage);
-    return ChatConversaPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_0__providers_conversas_conversas__["a" /* ConversasProvider */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_4_ionic_angular_util_events__["a" /* Events */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_usuario_usuario__["a" /* UsuarioProvider */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_storage_storage__["a" /* StorageProvider */]])
+    ], ListaConversasPage);
+    return ListaConversasPage;
 }());
 
-//# sourceMappingURL=chat-conversa.js.map
-
-/***/ }),
-
-/***/ 493:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Mensagem; });
-var Mensagem = (function () {
-    function Mensagem(id, conteudo, dataEnvio, autor, chat, listaRecebidos) {
-        this.id = id;
-        this.conteudo = conteudo;
-        this.dataEnvio = dataEnvio;
-        this.autor = autor;
-        this.chat = chat;
-        this.listaRecebidos = listaRecebidos;
-    }
-    return Mensagem;
-}());
-
-//# sourceMappingURL=mensagem.js.map
-
-/***/ }),
-
-/***/ 494:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Usuario; });
-var Usuario = (function () {
-    function Usuario(id, email, emailConfirmado, nome, ultimoAcesso, prioridade, selecionado) {
-        this.id = id;
-        this.email = email;
-        this.emailConfirmado = emailConfirmado;
-        this.nome = nome;
-        this.ultimoAcesso = ultimoAcesso;
-        this.prioridade = prioridade;
-        this.selecionado = selecionado;
-    }
-    return Usuario;
-}());
-
-//# sourceMappingURL=usuario.js.map
+//# sourceMappingURL=lista-conversas.js.map
 
 /***/ })
 

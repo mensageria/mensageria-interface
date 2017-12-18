@@ -67,14 +67,21 @@ var UsuarioProvider = (function () {
     UsuarioProvider.prototype.getUsuario = function (usuarioId) {
         return this.api.get('usuarios/' + usuarioId);
     };
+    UsuarioProvider.prototype.createUsuarios = function (usuarios) {
+        return this.api.post('/usuarios', usuarios);
+    };
     UsuarioProvider.prototype.getAllUsuarios = function () {
         return this.api.get('usuarios');
     };
+    UsuarioProvider.prototype.getLocalUsuarios = function () {
+        return this.api.http.get('/assets/usuarios.json');
+    };
     UsuarioProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__api_api__["a" /* ApiProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__api_api__["a" /* ApiProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__api_api__["a" /* ApiProvider */]) === "function" && _a || Object])
     ], UsuarioProvider);
     return UsuarioProvider;
+    var _a;
 }());
 
 //# sourceMappingURL=usuario.js.map
@@ -88,9 +95,9 @@ var UsuarioProvider = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SocketProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_stompjs__ = __webpack_require__(297);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_stompjs__ = __webpack_require__(296);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_stompjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_stompjs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_sockjs_client__ = __webpack_require__(303);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_sockjs_client__ = __webpack_require__(302);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_sockjs_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_sockjs_client__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -208,11 +215,11 @@ var map = {
 	],
 	"../pages/chat-conversa/chat-conversa.module": [
 		362,
-		1
+		0
 	],
 	"../pages/lista-conversas/lista-conversas.module": [
 		363,
-		0
+		1
 	]
 };
 function webpackAsyncContext(req) {
@@ -316,7 +323,7 @@ var StorageProvider = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_alert_alert__ = __webpack_require__(136);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_participa_participa__ = __webpack_require__(233);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_conversa__ = __webpack_require__(241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_conversa__ = __webpack_require__(240);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ionic_angular__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_conversas_conversas__ = __webpack_require__(120);
@@ -380,7 +387,7 @@ var ModalCadastrarConversaPage = (function () {
     };
     ModalCadastrarConversaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_5__angular_core__["m" /* Component */])({
-            selector: 'modal-cadastrar-conversa',template:/*ion-inline-start:"/home/allison/git/mensageria-interface/src/pages/modal-cadastrar-conversa/modal-cadastrar-conversa.html"*/'<ion-header>\n  <ion-toolbar>\n    <ion-title>\n      Criar nova conversa\n    </ion-title>\n    <ion-buttons start>\n      <button ion-button (click)="dismiss()">\n        <span ion-text color="primary" showWhen="ios">Cancelar</span>\n        <ion-icon name="md-close" showWhen="android, windows"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <form (ngSubmit)="cadastrarConversa()" id="ngForm" #form="ngForm">\n    <ion-item>\n      <ion-label>Nome</ion-label>\n      <ion-input name="nome" type="text" required [(ngModel)]="conversa.nome"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label> Mensagem interativa?</ion-label>\n      <ion-toggle name="interativa" [(ngModel)]="conversa.interativa" checked="false"></ion-toggle>\n    </ion-item>\n\n    <ion-list>\n      <ion-list-header text-center>\n        Selecione os integrantes\n      </ion-list-header>\n\n      <ion-item *ngFor="let usuario of usuarios">\n        <ion-label>{{usuario.nome}}</ion-label>\n        <ion-checkbox [(ngModel)]="usuario.selecionado" name="nomeUsuario"></ion-checkbox>\n      </ion-item>\n    </ion-list>\n\n  </form>\n  <ion-fab bottom right>\n    <button ion-fab form="ngForm" [disabled]="!form.form.valid">\n      <ion-icon name="add"></ion-icon>\n    </button>\n  </ion-fab>\n</ion-content>'/*ion-inline-end:"/home/allison/git/mensageria-interface/src/pages/modal-cadastrar-conversa/modal-cadastrar-conversa.html"*/,
+            selector: 'modal-cadastrar-conversa',template:/*ion-inline-start:"/home/born/projetos/mensageria-interface/src/pages/modal-cadastrar-conversa/modal-cadastrar-conversa.html"*/'<ion-header>\n  <ion-toolbar>\n    <ion-title>\n      Criar nova conversa\n    </ion-title>\n    <ion-buttons start>\n      <button ion-button (click)="dismiss()">\n        <span ion-text color="primary" showWhen="ios">Cancelar</span>\n        <ion-icon name="md-close" showWhen="android, windows"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <form (ngSubmit)="cadastrarConversa()" id="ngForm" #form="ngForm">\n    <ion-item>\n      <ion-label>Nome</ion-label>\n      <ion-input name="nome" type="text" required [(ngModel)]="conversa.nome"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label> Mensagem interativa?</ion-label>\n      <ion-toggle name="interativa" [(ngModel)]="conversa.interativa" checked="false"></ion-toggle>\n    </ion-item>\n\n    <ion-list>\n      <ion-list-header text-center>\n        Selecione os integrantes\n      </ion-list-header>\n\n      <ion-item *ngFor="let usuario of usuarios">\n        <ion-label>{{usuario.nome}}</ion-label>\n        <ion-checkbox [(ngModel)]="usuario.selecionado" name="nomeUsuario"></ion-checkbox>\n      </ion-item>\n    </ion-list>\n\n  </form>\n  <ion-fab bottom right>\n    <button ion-fab form="ngForm" [disabled]="!form.form.valid">\n      <ion-icon name="add"></ion-icon>\n    </button>\n  </ion-fab>\n</ion-content>'/*ion-inline-end:"/home/born/projetos/mensageria-interface/src/pages/modal-cadastrar-conversa/modal-cadastrar-conversa.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_3__providers_usuario_usuario__["a" /* UsuarioProvider */], __WEBPACK_IMPORTED_MODULE_7__providers_conversas_conversas__["a" /* ConversasProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_participa_participa__["a" /* ParticipaProvider */]]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_6_ionic_angular__["j" /* Platform */],
@@ -399,7 +406,7 @@ var ModalCadastrarConversaPage = (function () {
 
 /***/ }),
 
-/***/ 241:
+/***/ 240:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -420,13 +427,13 @@ var Conversa = (function () {
 
 /***/ }),
 
-/***/ 242:
+/***/ 241:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(243);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(242);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(263);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -434,7 +441,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 264:
+/***/ 263:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -585,7 +592,7 @@ var MyApp = (function () {
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/allison/git/mensageria-interface/src/app/app.html"*/'<ion-split-pane when="lg">\n  <!--  our side menu  -->\n  <ion-menu [content]="content">\n    <ion-header>\n      <ion-toolbar color="header">\n        <ion-title>Menu</ion-title>\n      </ion-toolbar>\n    </ion-header>\n    <ion-content>\n      <ion-list>\n        <button menuClose color="secondary" ion-item *ngFor="let p of pages" (click)="openPage(p)">\n          {{p.title}}\n        </button>\n      </ion-list>\n    </ion-content>\n  </ion-menu>\n\n  <!-- the main content -->\n  <ion-nav [root]="rootPage" main #content></ion-nav>\n</ion-split-pane>'/*ion-inline-end:"/home/allison/git/mensageria-interface/src/app/app.html"*/,
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/born/projetos/mensageria-interface/src/app/app.html"*/'<ion-split-pane when="lg">\n  <!--  our side menu  -->\n  <ion-menu [content]="content">\n    <ion-header>\n      <ion-toolbar color="header">\n        <ion-title>Menu</ion-title>\n      </ion-toolbar>\n    </ion-header>\n    <ion-content>\n      <ion-list>\n        <button menuClose color="secondary" ion-item *ngFor="let p of pages" (click)="openPage(p)">\n          {{p.title}}\n        </button>\n      </ion-list>\n    </ion-content>\n  </ion-menu>\n\n  <!-- the main content -->\n  <ion-nav [root]="rootPage" main #content></ion-nav>\n</ion-split-pane>'/*ion-inline-end:"/home/born/projetos/mensageria-interface/src/app/app.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_0__providers_socket_socket__["a" /* SocketProvider */]]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* Platform */],
@@ -645,7 +652,7 @@ var ListPage = (function () {
     };
     ListPage = ListPage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-list',template:/*ion-inline-start:"/home/allison/git/mensageria-interface/src/pages/list/list.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>List</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">\n      <ion-icon [name]="item.icon" item-start></ion-icon>\n      {{item.title}}\n      <div class="item-note" item-end>\n        {{item.note}}\n      </div>\n    </button>\n  </ion-list>\n  <div *ngIf="selectedItem" padding>\n    You navigated here from <b>{{selectedItem.title}}</b>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/allison/git/mensageria-interface/src/pages/list/list.html"*/
+            selector: 'page-list',template:/*ion-inline-start:"/home/born/projetos/mensageria-interface/src/pages/list/list.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>List</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">\n      <ion-icon [name]="item.icon" item-start></ion-icon>\n      {{item.title}}\n      <div class="item-note" item-end>\n        {{item.note}}\n      </div>\n    </button>\n  </ion-list>\n  <div *ngIf="selectedItem" padding>\n    You navigated here from <b>{{selectedItem.title}}</b>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/born/projetos/mensageria-interface/src/pages/list/list.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
     ], ListPage);
@@ -681,7 +688,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ApiProvider = (function () {
     function ApiProvider(http) {
         this.http = http;
-        this.urlBase = 'https://mensageria-ws.herokuapp.com';
+        this.urlBase = 'http://localhost:8080';
         this.url = this.urlBase + '/api';
     }
     ApiProvider.prototype.get = function (endpoint, params, reqOpts) {
@@ -723,5 +730,5 @@ var ApiProvider = (function () {
 
 /***/ })
 
-},[242]);
+},[241]);
 //# sourceMappingURL=main.js.map

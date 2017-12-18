@@ -1,0 +1,41 @@
+[{
+        "id": 1,
+        "nome": "Rafael Carvalho",
+        "dataNasc": "10/10/1996",
+        "tel": "(21)98963732",
+        "email": "rafaelcarvalho@gmail.com",
+        "setor_id": 1,
+        "sexo": "M",
+        "cargo_id": 1
+    },
+    {
+        "id": 2,
+        "nome": "Pedro Vasconcelos",
+        "dataNasc": "14/09/1994",
+        "tel": "(21)987895545",
+        "email": "pedrov@gmail.com",
+        "setor_id": 1,
+        "sexo": "M",
+        "cargo_id": 2
+    },
+    {
+        "id": 3,
+        "nome": "Amanda Fernandes",
+        "dataNasc": "02/02/2000",
+        "tel": "(21)987554862",
+        "email": "amandaf@gmail.com",
+        "setor_id": 1,
+        "sexo": "F",
+        "cargo_id": 3
+    },
+    {
+        "id": 4,
+        "nome": "Allison Verdam",
+        "dataNasc": "18/09/1995",
+        "tel": "(21)978458966",
+        "email": "allison@g.com",
+        "setor_id": 1,
+        "sexo": "M",
+        "cargo_id": 2
+    }
+]

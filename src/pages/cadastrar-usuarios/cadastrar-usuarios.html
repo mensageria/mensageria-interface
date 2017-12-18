@@ -14,5 +14,19 @@
 
 
 <ion-content padding>
+  <button ion-button medium color="danger" (click)="createUsuarios()">
+    Cadastrar usuários selecionados
+  </button>
+
+  <ion-item color="secondary" no-lines>
+    <ion-label>Selecionar todos</ion-label>
+    <ion-checkbox [(ngModel)]="selectedAll" (ionChange)="selectAll()"></ion-checkbox>
+  </ion-item>
+  <ion-list no-lines inset>
+    <ion-item *ngFor="let usuario of usuariosNaoCadastrados" color="secondary">
+      <ion-label>{{usuario.nome}}</ion-label>
+      <ion-checkbox [(ngModel)]="usuario.selected" name="nomeUsuario"></ion-checkbox>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
