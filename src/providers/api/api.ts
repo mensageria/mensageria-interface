@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
  */
 @Injectable()
 export class ApiProvider {
-  public readonly urlBase: string = 'https://mensageria-interface.herokuapp.com'
+  public readonly urlBase: string = 'http://52.67.102.184:8080'
   public readonly url: string = this.urlBase + '/api';
 
   constructor(public http: HttpClient) {
